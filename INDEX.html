@@ -64,6 +64,17 @@
       padding: 16px 12px;
       border: 1.5px solid #d6e6fa;
     }
+    .anonymous-note {
+      text-align: center;
+      color: #153160;
+      font-size: 1.07em;
+      margin: 10px 0 18px 0;
+      padding: 10px 10px;
+      background: #f5faff;
+      border-radius: 8px;
+      border: 1.5px dashed #d6e6fa;
+      font-weight: 500;
+    }
     label {
       font-weight: 700;
       margin-bottom: 7px;
@@ -289,14 +300,16 @@
     <span class="company-title">The WebSwan</span>
     <form id="websiteForm">
       <div class="free-demo-note">
-        I’m offering a free website analysis or demo at no cost or obligation to you.<br>
-        If you’re interested, please fill out the form and I’ll reach out to you soon!
+        Fill out the survey so I can better understand your online needs.
+      </div>
+      <div class="anonymous-note">
+        You can choose to by-pass filling out the form and just submit the anonymous market research. Thank you for your time! 😃
       </div>
       <div class="disclaimer">
         <strong>Disclaimer:</strong> We do not sell or share your information with third parties. Your details are collected only if you want a free website analysis or demo. The survey is anonymous unless you request a free demo or analysis.
       </div>
 
-      <!-- Question about website performance -->
+      <!-- Survey Questions -->
       <label for="websitePerformance">Is your website performing the way you want it to?</label>
       <select id="websitePerformance" name="websitePerformance">
         <option value="great">Yes, it’s doing great</option>
@@ -304,7 +317,6 @@
         <option value="no">No, it’s not working well at all</option>
       </select>
 
-      <!-- Website challenges -->
       <label for="websiteChallenges">What are the biggest challenges you’re facing with your website?</label>
       <select id="websiteChallenges" name="websiteChallenges" multiple>
         <option value="notGeneratingLeads">Not generating enough leads</option>
@@ -315,7 +327,6 @@
         <option value="other">Other</option>
       </select>
 
-      <!-- Website suspension or penalty -->
       <label for="penalized">Has your website been suspended, penalized, or de-indexed by a search engine?</label>
       <select id="penalized" name="penalized">
         <option value="yes">Yes</option>
@@ -323,7 +334,12 @@
         <option value="notSure">I’m not sure</option>
       </select>
 
-      <!-- Contact Details -->
+      <!-- Moved header content above Full Name field -->
+      <div class="free-demo-note">
+        I’m offering a free website analysis or demo at no cost or obligation to you. If you’re interested, please fill out the form and I’ll reach out to you soon!
+      </div>
+
+      <!-- Contact Details (not mandatory) -->
       <label for="fullName">Full Name:</label>
       <input type="text" id="fullName" name="fullName" autocomplete="name">
 
@@ -336,14 +352,12 @@
       <label for="businessName">Business Name:</label>
       <input type="text" id="businessName" name="businessName" autocomplete="organization">
 
-      <!-- Move "Do you have a website?" here -->
       <label for="hasWebsite">Do you have a website?</label>
       <select id="hasWebsite" name="hasWebsite" onchange="toggleWebsiteField()">
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
 
-      <!-- Website URL input (only shows if they have a website) -->
       <div id="websiteUrlField" style="display: none;">
         <label>Please enter your website URL:</label>
         <div class="website-url-row">
