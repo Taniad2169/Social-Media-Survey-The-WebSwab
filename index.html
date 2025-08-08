@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The WebSwan | Free Website Analysis or Demo Lead Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+    body {
+      background: #fff;
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #153160;
+    }
+    .lead-form-wrapper {
+      max-width: 700px;
+      margin: 38px auto 0 auto;
+      position: relative;
+    }
+    form {
+      background: #fff;
+      border: 2.5px solid #153160;
+      border-radius: 16px;
+      padding: 38px 28px 30px 28px;
+      box-shadow: 0 4px 22px rgba(21,49,96,0.07);
+      z-index: 2;
+      position: relative;
+    }
+    h2 {
+      text-align: center;
+      color: #153160;
+      font-weight: 700;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+    .company-title {
+      text-align: center;
+      font-weight: 900;
+      font-size: 2.2em;
+      color: #153160;
+      margin-bottom: 15px;
+      letter-spacing: 0.07em;
+    }
+    .disclaimer {
+      font-size: 0.98em;
+      background: #f9f9fc;
+      color: #234fc9;
+      border-radius: 7px;
+      padding: 10px 14px;
+      margin: 18px 0 14px 0;
+      text-align: center;
+      border: 1px dashed #153160;
+    }
+    .free-demo-note {
+      text-align: center;
+      color: #153160;
+      margin: 18px 0 20px 0;
+      font-size: 1.13em;
+      font-weight: 600;
+      background: #f5faff;
+      border-radius: 8px;
+      padding: 16px 12px;
+      border: 1.5px solid #d6e6fa;
+    }
+    .anonymous-note {
+      text-align: center;
+      color: #153160;
+      font-size: 1.07em;
+      margin: 10px 0 18px 0;
+      padding: 10px 10px;
+      background: #f5faff;
+      border-radius: 8px;
+      border: 1.5px dashed #d6e6fa;
+      font-weight: 500;
+    }
+    label {
+      font-weight: 700;
+      margin-bottom: 7px;
+      display: block;
+      color: #153160;
+      font-size: 1em;
+      letter-spacing: 0.01em;
+    }
+    select, input[type="text"], input[type="tel"], input[type="email"], input[type="url"] {
+      width: 100%;
+      padding: 10px;
+      margin: 9px 0 18px 0;
+      border-radius: 5px;
+      border: 1.5px solid #153160;
+      font-size: 1em;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #f9f9fc;
+      color: #153160;
+      box-sizing: border-box;
+      transition: border 0.2s;
+    }
+    select[multiple] {
+      height: 90px;
+    }
+    input:focus, select:focus {
+      border-color: #0f1e4a;
+      outline: none;
+    }
+    .website-url-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .website-url-row input[type="text"] {
+      flex: 1;
+      margin-bottom: 0;
+    }
+    .website-url-row .url-prefix {
+      padding: 10px 12px;
+      background: #f9f9fc;
+      border-radius: 5px;
+      border: 1.5px solid #153160;
+      color: #777;
+      font-size: 1em;
+      min-width: 138px;
+      text-align: right;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #153160;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.18em;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      margin-top: 6px;
+      transition: background 0.22s;
+    }
+    button:hover {
+      background-color: #234fc9;
+    }
+    p {
+      text-align: center;
+      color: #153160;
+      margin-top: 22px;
+      font-size: 1.1em;
+      font-weight: 500;
+    }
+    /* Admin Button */
+    .admin-btn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 99999;
+      background: #153160;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(21,49,96,0.13);
+      outline: none;
+      transition: background 0.25s;
+    }
+    .admin-btn:hover {
+      background: #234fc9;
+    }
+    /* Admin Modal */
+    .admin-modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 100000;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(21,49,96,0.13);
+      align-items: center;
+      justify-content: center;
+    }
+    .admin-modal {
+      background: #fff;
+      border-radius: 9px;
+      box-shadow: 0 4px 40px rgba(21,49,96,0.15);
+      padding: 30px 22px;
+      min-width: 320px;
+      max-width: 96vw;
+      max-height: 96vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .admin-modal h3 {
+      color: #153160;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .admin-input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #153160;
+      margin-bottom: 18px;
+      font-size: 1em;
+    }
+    .admin-login-btn {
+      background: #153160;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 18px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+      margin-bottom: 18px;
+      transition: background 0.22s;
+    }
+    .admin-login-btn:hover { background: #234fc9; }
+    .admin-close {
+      position: absolute;
+      top: 12px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3em;
+      color: #234fc9;
+      cursor: pointer;
+    }
+    .graph-section {
+      margin-bottom: 32px;
+      background: #f5faff;
+      border-radius: 8px;
+      padding: 20px 14px;
+      border: 1.5px solid #d6e6fa;
+    }
+    .graph-title {
+      color: #153160;
+      font-size: 1.13em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .graph-canvas {
+      width: 100%;
+      max-width: 420px;
+      height: 220px;
+      margin: 0 auto;
+      display: block;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(21,49,96,0.08);
+    }
+    /* Animated Swan Bird */
+    .animated-swan {
+      position: absolute;
+      right: -90px;
+      top: 78px;
+      width: 96px;
+      height: 96px;
+      z-index: 10;
+      animation: rockSwan 2.1s infinite ease-in-out alternate;
+    }
+    @keyframes rockSwan {
+      0%   { transform: rotate(18deg) translateY(0); }
+      50%  { transform: rotate(-8deg) translateY(8px); }
+      100% { transform: rotate(18deg) translateY(0); }
+    }
+    .animated-smiley {
+      position: absolute;
+      left: -86px;
+      top: 86px;
+      width: 78px;
+      height: 78px;
+      z-index: 10;
+      animation: rockSmiley 2.1s infinite ease-in-out alternate;
+    }
+    @keyframes rockSmiley {
+      0%   { transform: rotate(-18deg) translateY(0); }
+      50%  { transform: rotate(8deg) translateY(8px); }
+      100% { transform: rotate(-18deg) translateY(0); }
+    }
+    @media (max-width: 950px) {
+      .animated-swan { right: -10px; top: 12px; width: 64px; height: 64px; }
+      .animated-smiley { left: -10px; top: 16px; width: 44px; height: 44px; }
+    }
+    @media (max-width: 700px) {
+      .lead-form-wrapper { padding: 0 8px; }
+      .animated-swan { display: none; }
+      .animated-smiley { display: none; }
+    }
+  </style>
+  <!-- Chart.js CDN for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="lead-form-wrapper">
+    <span class="company-title">The WebSwan</span>
+    <form id="websiteForm">
+      <div class="free-demo-note">
+        Fill out the survey so I can better understand your online needs.
+      </div>
+      <div class="anonymous-note">
+        You can choose to by-pass filling out the form and just submit the anonymous market research. Thank you for your time! 😃
+      </div>
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> We do not sell or share your information with third parties. Your details are collected only if you want a free website analysis or demo. The survey is anonymous unless you request a free demo or analysis.
+      </div>
+
+      <!-- Survey Questions -->
+      <label for="websitePerformance">Is your website performing the way you want it to?</label>
+      <select id="websitePerformance" name="websitePerformance">
+        <option value="great">Yes, it’s doing great</option>
+        <option value="somewhat">Somewhat, but it could use improvement</option>
+        <option value="no">No, it’s not working well at all</option>
+      </select>
+
+      <label for="websiteChallenges">What are the biggest challenges you’re facing with your website?</label>
+      <select id="websiteChallenges" name="websiteChallenges" multiple>
+        <option value="notGeneratingLeads">Not generating enough leads</option>
+        <option value="lowTraffic">Low website traffic</option>
+        <option value="poorUX">Poor user experience</option>
+        <option value="slowLoading">Slow loading times</option>
+        <option value="notMobileFriendly">Not mobile-friendly</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="penalized">Has your website been suspended, penalized, or de-indexed by a search engine?</label>
+      <select id="penalized" name="penalized">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="notSure">I’m not sure</option>
+      </select>
+
+      <!-- Moved header content above Full Name field -->
+      <div class="free-demo-note">
+        I’m offering a free website analysis or demo at no cost or obligation to you. If you’re interested, please fill out the form and I’ll reach out to you soon!
+      </div>
+
+      <!-- Contact Details (not mandatory) -->
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" autocomplete="name">
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" autocomplete="tel">
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" autocomplete="email">
+
+      <label for="businessName">Business Name:</label>
+      <input type="text" id="businessName" name="businessName" autocomplete="organization">
+
+      <label for="hasWebsite">Do you have a website?</label>
+      <select id="hasWebsite" name="hasWebsite" onchange="toggleWebsiteField()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <div id="websiteUrlField" style="display: none;">
+        <label>Please enter your website URL:</label>
+        <div class="website-url-row">
+          <span class="url-prefix">https://www.</span>
+          <input type="text" id="websiteUrlSuffix" name="websiteUrlSuffix" placeholder="yourdomain.com" autocomplete="url">
+        </div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <!-- Animated Swan SVG -->
+    <div class="animated-swan" aria-label="Animated swan rocking">
+      <svg viewBox="0 0 96 96" fill="none">
+        <ellipse cx="48" cy="80" rx="36" ry="8" fill="#153160" opacity="0.15"/>
+        <path d="M75 38c0 13-11 24-27 24S21 51 21 38c0-13 11-24 27-24s27 11 27 24z" fill="#fff" stroke="#153160" stroke-width="3"/>
+        <path d="M48 22c-7 0-13 6-13 14 0 7 6 13 13 13s13-6 13-13c0-8-6-14-13-14zm0 22a8 8 0 110-16 8 8 0 010 16z" fill="#fffcf0" stroke="#153160" stroke-width="2"/>
+        <ellipse cx="55" cy="32" rx="2.4" ry="2.8" fill="#153160"/>
+        <ellipse cx="41" cy="32" rx="2.4" ry="2.8" fill="#153160"/>
+        <path d="M46 36a2 2 0 004 0" stroke="#153160" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M73 41c6 3 8 8 8 12s-5 13-33 13-33-9-33-13c0-4 2-9 8-12" stroke="#153160" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+    <!-- Animated Smiley SVG -->
+    <div class="animated-smiley" aria-label="Animated smiley rocking">
+      <svg viewBox="0 0 78 78" fill="none">
+        <ellipse cx="39" cy="70" rx="32" ry="7" fill="#153160" opacity="0.15"/>
+        <circle cx="39" cy="39" r="28" fill="#ffe769" stroke="#153160" stroke-width="3"/>
+        <ellipse cx="29" cy="36" rx="3.5" ry="4.2" fill="#153160"/>
+        <ellipse cx="49" cy="36" rx="3.5" ry="4.2" fill="#153160"/>
+        <path d="M30 50c3 4 15 4 18 0" stroke="#153160" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <!-- Admin Button (fixed, top right corner) -->
+    <button class="admin-btn" id="adminBtn" title="Admin Login">A</button>
+    <!-- Admin Modal -->
+    <div class="admin-modal-bg" id="adminModalBg">
+      <div class="admin-modal" id="adminModal">
+        <button class="admin-close" onclick="closeAdminModal()" title="Close">&times;</button>
+        <div id="adminLoginSection">
+          <h3>Admin Login</h3>
+          <input type="password" class="admin-input" id="adminPassword" placeholder="Enter admin password">
+          <button class="admin-login-btn" onclick="adminLogin()">Login</button>
+          <div style="text-align:center;color:#d00;font-size:0.95em;margin-top:4px;" id="adminError"></div>
+        </div>
+        <div id="adminGraphsSection" style="display:none;">
+          <h3>Live Lead Analytics</h3>
+          <div class="graph-section">
+            <div class="graph-title">Is your website performing the way you want it to?</div>
+            <canvas class="graph-canvas" id="graphPerformance"></canvas>
+          </div>
+          <div class="graph-section">
+            <div class="graph-title">What are the biggest challenges you’re facing with your website?</div>
+            <canvas class="graph-canvas" id="graphChallenges"></canvas>
+          </div>
+          <div class="graph-section">
+            <div class="graph-title">Has your website been suspended, penalized, or de-indexed by a search engine?</div>
+            <canvas class="graph-canvas" id="graphPenalized"></canvas>
+          </div>
+          <div class="graph-section">
+            <div class="graph-title">Do you have a website?</div>
+            <canvas class="graph-canvas" id="graphHasWebsite"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Show/hide website URL field
+    function toggleWebsiteField() {
+      var hasWebsite = document.getElementById("hasWebsite").value;
+      var websiteUrlField = document.getElementById("websiteUrlField");
+      if (hasWebsite === "yes") {
+        websiteUrlField.style.display = "block";
+      } else {
+        websiteUrlField.style.display = "none";
+      }
+    }
+    // --- ADMIN BUTTON & MODAL LOGIC ---
+    var adminMode = false;
+    document.getElementById("adminBtn").onclick = function() {
+      var modalBg = document.getElementById("adminModalBg");
+      // Toggle admin mode
+      if (modalBg.style.display === "flex") {
+        closeAdminModal();
+      } else {
+        modalBg.style.display = "flex";
+        document.getElementById("adminLoginSection").style.display = "";
+        document.getElementById("adminGraphsSection").style.display = "none";
+        document.getElementById("adminPassword").value = "";
+        document.getElementById("adminError").innerText = "";
+      }
+    }
+    function closeAdminModal() {
+      document.getElementById("adminModalBg").style.display = "none";
+    }
+    // --- SIMPLE LOGIN ---
+    function adminLogin() {
+      var pass = document.getElementById("adminPassword").value;
+      if(pass === "t2169") {
+        document.getElementById("adminLoginSection").style.display = "none";
+        document.getElementById("adminGraphsSection").style.display = "";
+        renderAllGraphs();
+      } else {
+        document.getElementById("adminError").innerText = "Incorrect password.";
+      }
+    }
+    // --- DATA STORAGE FOR LEADS ---
+    var leadStats = JSON.parse(localStorage.getItem('leadStats') || '{}');
+    if(!leadStats.performance) leadStats.performance = {great:0, somewhat:0, no:0};
+    if(!leadStats.challenges) leadStats.challenges = {
+      notGeneratingLeads:0, lowTraffic:0, poorUX:0, slowLoading:0, notMobileFriendly:0, other:0
+    };
+    if(!leadStats.penalized) leadStats.penalized = {yes:0, no:0, notSure:0};
+    if(!leadStats.hasWebsite) leadStats.hasWebsite = {yes:0, no:0};
+
+    // --- FORM SUBMISSION LOGIC ---
+    document.getElementById("websiteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Build domain if entered
+      var urlPrefix = "https://www.";
+      var urlSuffix = document.getElementById("websiteUrlSuffix") ? document.getElementById("websiteUrlSuffix").value.trim() : "";
+      var finalUrl = urlSuffix ? urlPrefix + urlSuffix : "";
+
+      // Tally answers
+      var perf = document.getElementById("websitePerformance").value;
+      leadStats.performance[perf] = (leadStats.performance[perf]||0) + 1;
+
+      var chal = Array.from(document.getElementById("websiteChallenges").selectedOptions).map(o=>o.value);
+      chal.forEach(function(key){
+        leadStats.challenges[key] = (leadStats.challenges[key]||0)+1;
+      });
+
+      var penalized = document.getElementById("penalized").value;
+      leadStats.penalized[penalized] = (leadStats.penalized[penalized]||0) + 1;
+
+      var hasWebsite = document.getElementById("hasWebsite").value;
+      leadStats.hasWebsite[hasWebsite] = (leadStats.hasWebsite[hasWebsite]||0) + 1;
+
+      localStorage.setItem('leadStats', JSON.stringify(leadStats));
+
+      alert("Thank you for submitting! We'll contact you with your free analysis or demo soon."
+        + (finalUrl ? ("\nWebsite URL: " + finalUrl) : ""));
+    });
+
+    // --- CHART.JS GRAPH RENDERING ---
+    var graphObjs = {};
+    function renderAllGraphs() {
+      // 1. Performance
+      var perfLabels = ["Great", "Somewhat, but it could use improvement", "Not working well at all"];
+      var perfKeys = ["great","somewhat","no"];
+      var perfData = perfKeys.map(k=>leadStats.performance[k]);
+      graphObjs.performance = renderPieChart('graphPerformance', perfLabels, perfData, ["#4CAF50","#FFC107","#F44336"]);
+      // 2. Challenges
+      var chalLabels = [
+        "Not generating enough leads","Low website traffic","Poor user experience",
+        "Slow loading times","Not mobile-friendly","Other"
+      ];
+      var chalKeys = ["notGeneratingLeads","lowTraffic","poorUX","slowLoading","notMobileFriendly","other"];
+      var chalData = chalKeys.map(k=>leadStats.challenges[k]);
+      graphObjs.challenges = renderBarChart('graphChallenges', chalLabels, chalData, "#234fc9");
+      // 3. Penalized
+      var penalizedLabels = ["Yes","No","I'm not sure"];
+      var penalizedKeys = ["yes","no","notSure"];
+      var penalizedData = penalizedKeys.map(k=>leadStats.penalized[k]);
+      graphObjs.penalized = renderPieChart('graphPenalized', penalizedLabels, penalizedData, ["#F44336","#4CAF50","#FFC107"]);
+      // 4. Has Website
+      var hwLabels = ["Yes","No"];
+      var hwKeys = ["yes","no"];
+      var hwData = hwKeys.map(k=>leadStats.hasWebsite[k]);
+      graphObjs.hasWebsite = renderPieChart('graphHasWebsite', hwLabels, hwData, ["#4CAF50","#F44336"]);
+    }
+    function renderPieChart(canvasId, labels, data, colors) {
+      var ctx = document.getElementById(canvasId).getContext('2d');
+      if(graphObjs[canvasId]) graphObjs[canvasId].destroy();
+      return new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: colors,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {legend:{display:true, position:'bottom'}}
+        }
+      });
+    }
+    function renderBarChart(canvasId, labels, data, color) {
+      var ctx = document.getElementById(canvasId).getContext('2d');
+      if(graphObjs[canvasId]) graphObjs[canvasId].destroy();
+      return new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Responses",
+            data: data,
+            backgroundColor: color,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {legend:{display:false}},
+          scales: {
+            y: {beginAtZero:true, ticks:{stepSize:1}}
+          }
+        }
+      });
+    }
+    // Initialize the website field on page load (in case of browser autofill)
+    document.addEventListener("DOMContentLoaded", function() {
+      toggleWebsiteField();
+    });
+  </script>
+</body>
+</html>
